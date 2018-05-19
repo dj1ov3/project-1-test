@@ -1,25 +1,209 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/flat-embed@v0.8.0/dist/embed.min.js"></script>
-    
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.1.9/Tone.js"></script>
+
+
+<style>
+    * { box-sizing:border-box; }
+
+  body{ margin:0; background:#222; }
+  ul {
+    height:18.875em; width:34em;
+    margin:5em auto; padding:3em 0 0 3em; position:relative; 
+    border:1px solid #160801; border-radius:1em; 
+    /* background:-webkit-gradient(linear, right bottom, left top, color-stop(0%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0))), url('https://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png'); */
+  box-shadow:0 0 50px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5); }
+  li { margin:0; padding:0; list-style:none; position:relative; float:left; }
+
+  ul .white {
+    height:16em; width:4em; z-index:1;
+    border-left:1px solid #bbb;
+    border-bottom:1px solid #bbb;
+    border-radius:0 0 5px 5px;
+    box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+    background: linear-gradient(top, #eee 0%,#fff 100%);
+  }
+
+  ul .white:active {
+    border-top:1px solid #777;
+    border-left:1px solid #999;
+    border-bottom:1px solid #999;
+    box-shadow:2px 0 3px rgba(0,0,0,0.1) inset, -5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+    background: linear-gradient(top, #fff 0%,#e9e9e9 100%);
+  }
+
+  .black {
+    height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
+    border:1px solid #000;
+    border-radius:0 0 3px 3px;
+    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -5px 2px 3px rgba(0,0,0,0.6) inset, 0 2px 4px rgba(0,0,0,0.5);
+    background:linear-gradient(45deg, #222 0%,#555 100%);
+  }
+
+  .black:active {
+    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
+    background:linear-gradient(left, #444 0%,#222 100%);
+  }
+
+  /* .a,.g,.f,.d,.c { margin:0 0 0 -1em;  } */
+  #g,#a,#b,#d,#e { margin:0 0 0 -1em;  }
+
+  ul li:first-child { border-radius:5px 0 5px 5px; }
+  ul li:last-child { border-radius:0 5px 5px 5px; }
+</style>
 </head>
 <body>
-  <div id="embed-container"></div>
-  <script src="https://cdn.jsdelivr.net/npm/flat-embed@v0.8.0/dist/embed.min.js"></script>
-  <script>
-    var container = document.getElementById('embed-container');
-    var embed = new Flat.Embed(container, {
-      // score: '<score-id-you-want-to-load>',
-      embedParams: {
-        appId: '5af892a09ec2071ecfaa57d2',
-        controlsFloating: false
-      }
-    });
+ 
+  <br><br>
+    <ul class="set">
+      <li class="white e" id="c"></li>
+      <li class="black ds" id="cSharp"></li>
+      <li class="white d" id="d"></li>
+      <li class="black cs" id="dSharp"></li>
+      <li class="white c" id="e"></li>
+      <li class="white b" id="f"></li>
+      <li class="black as" id="fSharp"></li>
+      <li class="white a" id="g"></li>
+      <li class="black gs" id="gSharp"></li>
+      <li class="white g" id="a"></li>
+      <li class="black fs" id="aSharp"></li>
+      <li class="white f" id="b"></li>
+   
+      
+      
+      
+      
+    </ul>
+
+
+
+
+<script>
+
+// var pianoKeys = {
+//   "$('#c')" : synth.triggerAttackRelease('C4', '8n'),
+//   "$('#d')" : synth.triggerAttackRelease('D4', '8n'),
+//   "$('#e')" : synth.triggerAttackRelease('E4', '8n'),
+//   "$('#f')" : synth.triggerAttackRelease('F4', '8n'),
+//   "$('#g')" : synth.triggerAttackRelease('G4', '8n'),
+//   "$('#a')" : synth.triggerAttackRelease('A4', '8n'),
+//   "$('#b')" : synth.triggerAttackRelease('B4', '8n')
+// };
+
+
+
+ $(document).keydown(function(event) {
+    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+
+switch (event.key) {
+    case "a":
+    synth.triggerAttack('C4')
+    $("#c").toggleClass(".white:active");
+        break;
+    case "s":
+    synth.triggerAttack('D4')
+        break;
+    case "d":
+    synth.triggerAttack('E4')
+        break;
+    case "f":
+    synth.triggerAttack('F4')
+        break;
+    case "g":
+    synth.triggerAttack('G4')
+      break;
+    case "h":
+    synth.triggerAttack('A4')
+      break;
+    case "j":
+    synth.triggerAttack('B4')
+      break;
+}
+});
+
+$(document).keyup(function(event) {
+    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+
+switch (event.key) {
+    case "a":
+    synth.triggerRelease()
+        break;
+    case "s":
+    synth.triggerRelease()
+        break;
+    case "d":
+    synth.triggerRelease()
+        break;
+    case "f":
+    synth.triggerRelease()
+        break;
+    case "g":
+    synth.triggerRelease()
+      break;
+    case "h":
+    synth.triggerRelease()
+      break;
+    case "j":
+    synth.triggerRelease()
+      break;
+}
+});
+
+
+var synth = new Tone.Synth().toMaster()
+
+
+//play a middle 'C' for the duration of an 8th note
+// $("body").keydown(function() {
+//   synth.triggerAttack('C4', '8n')
+// })
+
+// $("body").keyup(function(){
+//   synth.triggerRelease()
+// })
+
+
+
+
+// function playsound(){
+  
+//   for(i = 0; i < pianoKeys.length; i++){
+    
+//   }
+  
+
+
+// };
+
+$("body").on("click", "#c", function(){
+  synth.triggerAttackRelease('C4', '8n')
+})
+$("body").on("click", "#d", function(){
+  synth.triggerAttackRelease('D4', '8n')
+})
+$("body").on("click", "#e", function(){
+  synth.triggerAttackRelease('E4', '8n')
+})
+$("body").on("click", "#f", function(){
+  synth.triggerAttackRelease('F4', '8n')
+})
+$("body").on("click", "#g", function(){
+  synth.triggerAttackRelease('G4', '8n')
+})
+$("body").on("click", "#a", function(){
+  synth.triggerAttackRelease('A4', '8n')
+})
+$("body").on("click", "#b", function(){
+  synth.triggerAttackRelease('B4', '8n')
+})
+
+
   </script>
 
 
-  <!-- <iframe src="https://flat.io/embed/[SCORE_ID]" height="450" width="100%" frameBorder="0" allowfullscreen></iframe> -->
 
 </body>
 </html>
